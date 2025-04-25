@@ -10,6 +10,8 @@ public class GroundSensor : MonoBehaviour
 
     private PlayerControl playerScript;
 
+    public bool canDoubleJump = true;
+
     void Awake()
    {
      rigidBody = GetComponentInParent<Rigidbody2D>();
@@ -22,6 +24,7 @@ public class GroundSensor : MonoBehaviour
     if(collider.gameObject.layer == 3)
       {
          isGrounded  = true;
+         canDoubleJump = true;
       }
       else if(collider.gameObject.layer == 6)
       {
