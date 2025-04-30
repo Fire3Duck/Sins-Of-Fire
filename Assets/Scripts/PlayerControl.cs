@@ -30,17 +30,35 @@ private bool _isDashing = false;
 private float _chargedAttackDamage;
 private bool _isCharging = false;
 
+//Que se escuche cuando camine
+[SerializeField] private AudioSource _audioSource;
+[SerializeField] private AudioClip _footStepsAudio;
+private bool _alreadyPlaying = false;
+
+//Disparo
+public Transform fireSpawn;
+public GameObject firePrefab;
+public bool canShoot = true;
+
+
 public float inputHorizontal;
 
 public float jumpForce = 10;
 
 public float Velocity = 4.5f;
 
+//Particulas
+private ParticleSystem _particleSystem;
+private Transform _particlesTransform;
+private Vector3 _particlesPosition;
+
 
     // Start is called before the first frame update
     void Start()
     {
         _chargedAttackDamage = _baseChargedAttackDamage;
+        _audioSource.loop = true;
+        _audioSource.clip = _footStepsAudio;
     }
 
     void Awake()
@@ -50,6 +68,10 @@ public float Velocity = 4.5f;
         _groundSensor = GetComponentInChildren<GroundSensor>();
         _spriteRender = GetComponent<SpriteRenderer>();
         _boxCollider = GetComponent<BoxCollider2D>();
+        _groundSensor = GetComponentInChildren<GroundSensor>();
+        _particleSystem = GetComponentInChildren<ParticleSystem>();
+        _particlesTransform = _particleSystem.transform;
+        _particlesPosition = _particlesTransform.localPosition;
     }
 
     // Update is called once per frame
@@ -79,12 +101,13 @@ public float Velocity = 4.5f;
             StartCoroutine(Dash());
         }
 
-        /*if(Input.GetButtonDown("Espadazo"))
+        if(Input.GetButtonDown("Espadazo"))
         {
             NormalAttack();
-        }*/
+            _animator.SetTrigger("IsAttacking");
+        }
 
-        if(Input.GetButton("EspadazoF"))
+        /*if(Input.GetButton("EspadazoF"))
         {
             AttackCharge();
         }
@@ -92,6 +115,11 @@ public float Velocity = 4.5f;
         if(Input.GetButtonUp("EspadazoF"))
         {
             ChargedAttack();
+        }*/
+
+        if(Input.GetButtonDown("Fireball") && canShoot)
+        {
+            Shoot();
         }
     }
 
@@ -110,7 +138,7 @@ public float Velocity = 4.5f;
         rigidBody.velocity = new Vector2(inputHorizontal * Velocity, rigidBody.velocity.y);
     }
 
-    void Movement ()
+    void Movement()
     {
         if(inputHorizontal > 0)
         {
@@ -125,6 +153,26 @@ public float Velocity = 4.5f;
         else
         {
             _animator.SetBool("IsRunning", false);
+        }
+    }
+
+    void FootStepsSound()
+    {
+        if(_groundSensor.isGrounded && Input.GetAxisRaw("Horizontal") != 0 && !_alreadyPlaying)
+        {
+            _particlesTransform.SetParent(gameObject. transform);
+            _particlesTransform.localPosition = _particlesPosition;
+            _particlesTransform.rotation = transform.rotation;
+            _audioSource.Play();
+            _particleSystem.Play();
+            _alreadyPlaying = true;
+        }
+        else if(!_groundSensor.isGrounded || Input.GetAxisRaw("Horizontal") == 0)
+        {
+            _particlesTransform.SetParent(null);
+            _audioSource.Stop();
+            _particleSystem.Stop();
+            _alreadyPlaying = false;
         }
     }
 
@@ -176,7 +224,7 @@ public float Velocity = 4.5f;
         }   
     }
 
-    void AttackCharge()
+    /*void AttackCharge()
     {
         if(_chargedAttackDamage < _maxChargedAttackDamage)
         {
@@ -201,6 +249,12 @@ public float Velocity = 4.5f;
         }
 
         _chargedAttackDamage = _baseChargedAttackDamage;
+    }*/
+
+    void Shoot()
+    {
+        Instantiate(firePrefab, fireSpawn.position, fireSpawn.rotation);
+        _animator.SetTrigger("IsShooting");
     }
 
 
