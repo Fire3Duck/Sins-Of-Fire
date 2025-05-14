@@ -46,6 +46,7 @@ public bool canShoot = true;
 public AudioClip deathSFX;
 public AudioClip jumpSFX;
 public AudioClip shootSFX;
+public AudioClip dashSFX;
 
 
 public float inputHorizontal;
@@ -58,6 +59,9 @@ public float Velocity = 4.5f;
 private ParticleSystem _particleSystem;
 private Transform _particlesTransform;
 private Vector3 _particlesPosition;
+
+public Cofres _chests;
+public bool _IsChestHere;
 
 
     // Start is called before the first frame update
@@ -79,6 +83,7 @@ private Vector3 _particlesPosition;
         _particleSystem = GetComponentInChildren<ParticleSystem>();
         _particlesTransform = _particleSystem.transform;
         _particlesPosition = _particlesTransform.localPosition;
+        _chests = GameObject.Find("cofre").GetComponent<Cofres>();
     }
 
     // Update is called once per frame
@@ -127,6 +132,11 @@ private Vector3 _particlesPosition;
         if(Input.GetButtonDown("Fireball") && canShoot)
         {
             Shoot();
+        }
+
+        if(Input.GetButtonDown("Submit") && _IsChestHere)
+        {
+            _chests.OpenChest();
         }
     }
 
@@ -209,6 +219,7 @@ private Vector3 _particlesPosition;
         rigidBody.gravityScale = 0;
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
         _animator.SetTrigger("IsDashing");
+        _audioSource.PlayOneShot(dashSFX);
 
         _isDashing = true;
         _canDash = false;
@@ -292,6 +303,20 @@ private Vector3 _particlesPosition;
         //_soundManager.StartCoroutine("DeathBGM");
 
         //_soundManager.Invoke("DeathBGM", deathSFX.lenght);
+    }
+
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.layer == 10)
+        {
+            _IsChestHere = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        _IsChestHere = false;
     }
 
 }

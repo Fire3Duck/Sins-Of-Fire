@@ -26,9 +26,9 @@ public class GroundSensor : MonoBehaviour
          isGrounded  = true;
          canDoubleJump = true;
       }
-      else if(collider.gameObject.layer == 6)
+      else if (collider.gameObject.layer == 9)
       {
-        rigidBody.AddForce(Vector2.up * 20, ForceMode2D.Impulse);
+         playerScript.Death();
       }
          
    }

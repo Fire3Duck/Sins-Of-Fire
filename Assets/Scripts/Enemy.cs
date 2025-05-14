@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public int direction = 1;
     public float speed = 5;
     private BoxCollider2D _boxCollider;
+    public AudioClip deathSFX;
 
     public float maxHealth;
     private float currentHealth;
@@ -45,6 +46,7 @@ public class Enemy : MonoBehaviour
         direction = 0;
         _rigidBody.gravityScale = 0;
         _boxCollider.enabled = false;
+        _audioSource.PlayOneShot(deathSFX);
         Destroy(gameObject, 0.2f);
     }
 
@@ -65,7 +67,7 @@ public class Enemy : MonoBehaviour
         {
           direction *= -1;  
         }
-        
+
         if(Collision.gameObject.CompareTag("Player"))
         {
             //Destroy(Collision.gameObject);

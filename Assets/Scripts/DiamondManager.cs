@@ -32,12 +32,12 @@ public class DiamondManager : MonoBehaviour
         
     }
 
-     void OnCollisionEnter2D(Collision2D Collision) 
+     void OnTriggerEnter2D(Collider2D collider) 
     {
-        if(Collision.gameObject.CompareTag("Player"))
+        if(collider.gameObject.CompareTag("Player"))
         {
             //Destroy(Collision.gameObject);
-            PlayerControl playerScript = Collision.gameObject.GetComponent<PlayerControl>();
+            PlayerControl playerScript = collider.gameObject.GetComponent<PlayerControl>();
             Death();
         }
     }
