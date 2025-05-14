@@ -3,7 +3,16 @@ guid: 96a82c8d6fd7d67438189c4d90c3c7e2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _hitBoxPosition: {instanceID: 0}
+  - _audioSource: {instanceID: 0}
+  - _footStepsAudio: {instanceID: 0}
+  - fireSpawn: {fileID: 361277649236448375, guid: 5139e705b3428f342b26c94642652eb0, type: 3}
+  - firePrefab: {instanceID: 0}
+  - _atackAudio: {instanceID: 0}
+  - deathSFX: {instanceID: 0}
+  - jumpSFX: {instanceID: 0}
+  - shootSFX: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

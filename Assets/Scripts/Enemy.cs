@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
         direction = 0;
         _rigidBody.gravityScale = 0;
         _boxCollider.enabled = false;
-        Destroy(gameObject, 2);
+        Destroy(gameObject, 0.2f);
     }
 
     public void TakeDamage(float damage)
@@ -64,6 +64,13 @@ public class Enemy : MonoBehaviour
         if(Collision.gameObject.layer == 6 || Collision.gameObject.layer == 8)
         {
           direction *= -1;  
+        }
+        
+        if(Collision.gameObject.CompareTag("Player"))
+        {
+            //Destroy(Collision.gameObject);
+            PlayerControl playerScript = Collision.gameObject.GetComponent<PlayerControl>();
+            playerScript.Death();
         }
     }
 

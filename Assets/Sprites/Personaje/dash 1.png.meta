@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 307f6af9e979be245977852519b87f49
+guid: 10c254a316dd4344e99b017468fadb1f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Diamante_0
+      name: dash 1_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 22
-        width: 32
-        height: 20
+        x: 1
+        y: 1
+        width: 62
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da8f8487b8d89544f88b53f8a8519aaf
-      internalID: 227818843
+      spriteID: 5d5747a0131066945be2e9ce14e1569c
+      internalID: -1712286320
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Diamante_0: 227818843
+      dash 1_0: -1712286320
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

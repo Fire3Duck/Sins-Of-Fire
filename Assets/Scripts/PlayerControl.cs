@@ -40,6 +40,13 @@ public Transform fireSpawn;
 public GameObject firePrefab;
 public bool canShoot = true;
 
+//Sonido ataque
+[SerializeField] private AudioClip _atackAudio;
+
+public AudioClip deathSFX;
+public AudioClip jumpSFX;
+public AudioClip shootSFX;
+
 
 public float inputHorizontal;
 
@@ -201,6 +208,7 @@ private Vector3 _particlesPosition;
         float gravity = rigidBody.gravityScale;
         rigidBody.gravityScale = 0;
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
+        _animator.SetTrigger("IsDashing");
 
         _isDashing = true;
         _canDash = false;
@@ -217,10 +225,11 @@ private Vector3 _particlesPosition;
     void NormalAttack()
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(_hitBoxPosition.position, _attackRadius, _enemyLayer);
-        foreach(Collider2D enemy in enemies)
+         _audioSource.PlayOneShot(_atackAudio); 
+         foreach(Collider2D enemy in enemies)
         {
-            //Enemy enemyScript = enemy.GetComponent<Enemy>();
-            //enemyScript.TakeDamage(_attackDamage);
+            Enemy enemyScript = enemy.GetComponent<Enemy>();
+            enemyScript.TakeDamage(_attackDamage);
         }   
     }
 
@@ -264,4 +273,25 @@ private Vector3 _particlesPosition;
 
         Gizmos.DrawWireSphere(_hitBoxPosition.position, _attackRadius);
     }
+
+   public void Death()
+    {
+        //_animator.SetTrigger("IsDead");
+        _audioSource.PlayOneShot(deathSFX);
+        _boxCollider.enabled = false;
+
+        Destroy(_groundSensor.gameObject);
+        inputHorizontal = 0;
+        rigidBody.velocity = Vector2.zero;
+        
+        rigidBody.AddForce(Vector2.up * jumpForce / 2, ForceMode2D.Impulse);
+        
+        //_gameManager.isPlaying = false;
+
+        //StartCoroutine(_soundManager.DeathBGM());
+        //_soundManager.StartCoroutine("DeathBGM");
+
+        //_soundManager.Invoke("DeathBGM", deathSFX.lenght);
+    }
+
 }

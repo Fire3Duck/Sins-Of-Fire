@@ -21,10 +21,11 @@ public class FireBall : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider) 
     {
-        if(collider.gameObject.layer == 6)
+        if(collider.gameObject.layer == 7)
         {
             Enemy enemyScript = collider.gameObject.GetComponent<Enemy>();
             enemyScript.TakeDamage(fireDamage);
+            Debug.Log("Hola");
             FireDeath(); 
         }
 
