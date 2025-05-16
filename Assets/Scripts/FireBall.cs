@@ -9,6 +9,9 @@ public class FireBall : MonoBehaviour
 
     public float fireDamage = 2;
 
+    private Animator _animator;
+    private bool Fire = true;
+
     void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -38,5 +41,6 @@ public class FireBall : MonoBehaviour
     void FireDeath()
     {
         Destroy(gameObject);
+        _animator.SetBool("Fire", true);
     }
 }

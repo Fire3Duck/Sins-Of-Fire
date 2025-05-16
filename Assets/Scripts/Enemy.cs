@@ -16,6 +16,11 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     private float currentHealth;
 
+    //Cuchillo
+    [SerializeField] private PolygonCollider2D _triggerCuchillo;
+    [SerializeField] private PlayerControl _playerControl;
+    [SerializeField] private float _cuchilloDamage = 0.35f;
+
 
     void Awake()
     {
@@ -23,6 +28,7 @@ public class Enemy : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _rigidBody = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
+        _playerControl = GameObject.Find("Personaje").GetComponent<PlayerControl>();
     }
     // Start is called before the first frame update
     void Start()
@@ -87,6 +93,16 @@ public class Enemy : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
             _animator.SetBool("IsRunning", true);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.CompareTag("Player"))
+        {
+            _playerControl.TakeDamage(_cuchilloDamage);
+            //_playerControl.constantDamage = true;
+            //StartCoroutine(_playerControl.ConstantDamage(_cuchilloDamage));
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -10,6 +11,9 @@ private Animator _animator;
 private GroundSensor _groundSensor;
 private SpriteRenderer _spriteRender;
 private BoxCollider2D _boxCollider;
+private GameManager _gameManager;
+private SoundManager _soundManager;
+
 
 //El Dash
 [SerializeField] private float _dashForce = 20;
@@ -48,6 +52,12 @@ public AudioClip jumpSFX;
 public AudioClip shootSFX;
 public AudioClip dashSFX;
 
+//Vida
+[SerializeField] private float _currentHealth;
+[SerializeField] private float _maxHealth = 1;
+[SerializeField] private Image _healthBar;
+[SerializeField] private AudioClip _damage;
+[SerializeField] private SpriteRenderer _spriteRenderer;
 
 public float inputHorizontal;
 
@@ -70,6 +80,10 @@ public bool _IsChestHere;
         _chargedAttackDamage = _baseChargedAttackDamage;
         _audioSource.loop = true;
         _audioSource.clip = _footStepsAudio;
+
+        _currentHealth = _maxHealth;
+        _healthBar.fillAmount = _maxHealth;
+        
     }
 
     void Awake()
@@ -83,7 +97,9 @@ public bool _IsChestHere;
         _particleSystem = GetComponentInChildren<ParticleSystem>();
         _particlesTransform = _particleSystem.transform;
         _particlesPosition = _particlesTransform.localPosition;
-        _chests = GameObject.Find("cofre").GetComponent<Cofres>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _soundManager = FindObjectOfType<SoundManager>().GetComponent<SoundManager>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -297,12 +313,12 @@ public bool _IsChestHere;
         
         rigidBody.AddForce(Vector2.up * jumpForce / 2, ForceMode2D.Impulse);
         
-        //_gameManager.isPlaying = false;
+        _gameManager.isPlaying = false;
 
-        //StartCoroutine(_soundManager.DeathBGM());
+        StartCoroutine(_soundManager.DeathBGM());
         //_soundManager.StartCoroutine("DeathBGM");
 
-        //_soundManager.Invoke("DeathBGM", deathSFX.lenght);
+        //_soundManager.Invoke("DeathBGM", deathSFX.length);
     }
 
 
@@ -310,6 +326,7 @@ public bool _IsChestHere;
     {
         if(collider.gameObject.layer == 10)
         {
+            _chests = collider.gameObject.GetComponent<Cofres>();
             _IsChestHere = true;
         }
     }
@@ -317,6 +334,17 @@ public bool _IsChestHere;
     void OnTriggerExit2D(Collider2D collider)
     {
         _IsChestHere = false;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _healthBar.fillAmount = _currentHealth -= damage;
+        _audioSource.PlayOneShot(_damage);
+
+        if(_currentHealth <= 0)
+        {
+            Death();
+        }
     }
 
 }
