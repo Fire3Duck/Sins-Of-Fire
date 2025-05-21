@@ -9,7 +9,7 @@ public class DiamondManager : MonoBehaviour
     private AudioSource _audioSource;
     public AudioClip CoinSFX;
     private SpriteRenderer _renderer;
-    //GameManager _gameManager;
+    GameManager _gameManager;
 
     void Awake()
     
@@ -17,7 +17,7 @@ public class DiamondManager : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider2D>();
         _renderer = GetComponent<SpriteRenderer>();
         _audioSource = GetComponent<AudioSource>();
-        //_gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
     
     // Start is called before the first frame update
@@ -44,8 +44,7 @@ public class DiamondManager : MonoBehaviour
 
     public void Death()
     {
-        //_gameManager.AddCoins();
-
+        _gameManager.AddDiamond();
         _boxCollider.enabled = false;
         _renderer.enabled = false;
         _audioSource.PlayOneShot(CoinSFX);

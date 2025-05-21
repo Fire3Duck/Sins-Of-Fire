@@ -7,14 +7,12 @@ public class GameManager : MonoBehaviour
 private SoundManager _soundManager;
 public bool isPlaying = true;
 
-    void Awake()
-    {
-        _soundManager = FindObjectOfType<SoundManager>().GetComponent<SoundManager>();
-    }
-    // Start is called before the first frame update
+public Text diamondText;
+
+private int diamond = 0;
     void Start()
     {
-        
+        diamondText.text = "=" + diamond.ToString();
     }
 
     // Update is called once per frame
@@ -22,4 +20,17 @@ public bool isPlaying = true;
     {
         
     }
+    void Awake()
+    {
+        _soundManager = FindObjectOfType<SoundManager>().GetComponent<SoundManager>();
+    }
+
+    public void AddDiamond()
+    {
+        diamond++; 
+        diamondText.text = "=" + diamond.ToString();
+        //para que cuente monedas de uno en uno.
+    } 
+    // Start is called before the first frame update
+    
 }
