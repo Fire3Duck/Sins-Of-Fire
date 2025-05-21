@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2d068bc8ee8bf184a9f4a5fa2d0cf25f
+guid: 375767ed54483a04f89ed7563f9bba64
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Poci\xF3n de vida_0"
+      name: Teclas_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 2
-        width: 40
-        height: 57
+        x: 16
+        y: 156
+        width: 513
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +111,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c9daad8514ab574088285004f426cca
-      internalID: -1177490122
+      spriteID: a3ff2a5f7e85f204594ca64ae6f38fc8
+      internalID: 1344657754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teclas_1
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 33
+        width: 84
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7b99c6a042ff6340a60d3c5d151dab3
+      internalID: 1310049041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teclas_2
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 34
+        width: 84
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 293d526d0982b0042a86a27bc86ae427
+      internalID: 1946043996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teclas_3
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 34
+        width: 84
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a724816cbd8ea945b3b07d11ba7c7f0
+      internalID: 704173986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teclas_4
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 35
+        width: 268
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3056ce68aa8ce7e4f995fc46a3f36557
+      internalID: 1316270340
       vertices: []
       indices: 
       edges: []
@@ -128,7 +212,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "Poci\xF3n de vida_0": -1177490122
+      Teclas_0: 1344657754
+      Teclas_1: 1310049041
+      Teclas_2: 1946043996
+      Teclas_3: 704173986
+      Teclas_4: 1316270340
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

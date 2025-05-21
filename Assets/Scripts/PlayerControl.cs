@@ -44,6 +44,11 @@ public Transform fireSpawn;
 public GameObject firePrefab;
 public bool canShoot = true;
 
+private bool _hasMana = true;
+
+
+[SerializeField] private float _fireballCost = 0.35f;
+
 //Sonido ataque
 [SerializeField] private AudioClip _atackAudio;
 
@@ -73,6 +78,11 @@ private Vector3 _particlesPosition;
 public Cofres _chests;
 public bool _IsChestHere;
 
+//Mana
+[SerializeField] private float _currentMana;
+[SerializeField] private float _maxMana = 1;
+[SerializeField] private Image _manaBar;
+
 
     // Start is called before the first frame update
     void Start()
@@ -81,8 +91,10 @@ public bool _IsChestHere;
         _audioSource.loop = true;
         _audioSource.clip = _footStepsAudio;
 
+        _currentMana = _maxMana;
         _currentHealth = _maxHealth;
         _healthBar.fillAmount = _maxHealth;
+        _manaBar.fillAmount = _maxMana;
         
     }
 
@@ -100,6 +112,8 @@ public bool _IsChestHere;
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         _soundManager = FindObjectOfType<SoundManager>().GetComponent<SoundManager>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _manaBar = GameObject.Find("ManaBarra").GetComponent<Image>();
+        
     }
 
     // Update is called once per frame
@@ -145,9 +159,10 @@ public bool _IsChestHere;
             ChargedAttack();
         }*/
 
-        if(Input.GetButtonDown("Fireball") && canShoot)
+        if(Input.GetButtonDown("Fireball") && _hasMana)
+
         {
-            Shoot();
+            Shoot(_fireballCost);
         }
 
         if(Input.GetButtonDown("Submit") && _IsChestHere)
@@ -287,10 +302,22 @@ public bool _IsChestHere;
         _chargedAttackDamage = _baseChargedAttackDamage;
     }*/
 
-    void Shoot()
+    void Shoot(float cost)
     {
         Instantiate(firePrefab, fireSpawn.position, fireSpawn.rotation);
         _animator.SetTrigger("IsShooting");
+
+        _currentMana -= cost;
+        _manaBar.fillAmount = _currentMana;
+
+        if(_currentMana <= 0)
+        {
+            _hasMana = false;
+        }
+        else if(_currentMana > 0)
+        {
+            _hasMana = true;
+        }
     }
 
 
@@ -345,6 +372,19 @@ public bool _IsChestHere;
         {
             Death();
         }
+    }
+
+    public void RestoreMana()
+    {
+        _currentMana += 0.35f;
+        _manaBar.fillAmount = _currentMana;
+        _hasMana = true;
+    }
+
+    public void RestoreHealth()
+    {
+        _currentHealth += 0.5f;
+        _healthBar.fillAmount = _currentHealth;
     }
 
 }

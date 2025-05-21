@@ -69,16 +69,9 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D Collision) 
     {
-        if(Collision.gameObject.layer == 6 || Collision.gameObject.layer == 8)
+        if(Collision.gameObject.layer == 8)
         {
           direction *= -1;  
-        }
-
-        if(Collision.gameObject.CompareTag("Player"))
-        {
-            //Destroy(Collision.gameObject);
-            PlayerControl playerScript = Collision.gameObject.GetComponent<PlayerControl>();
-            playerScript.Death();
         }
     }
 

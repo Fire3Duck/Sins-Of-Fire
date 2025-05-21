@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-private SoundManager _soundManager;
-public bool isPlaying = true;
+    private SoundManager _soundManager;
+    public bool isPlaying = true;
 
-public Text diamondText;
+    public Text diamondText;
 
-private int diamond = 0;
+    private int diamond = 0;
     void Start()
     {
-        diamondText.text = "=" + diamond.ToString();
+        diamondText.text = diamond.ToString();
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ private int diamond = 0;
     public void AddDiamond()
     {
         diamond++; 
-        diamondText.text = "=" + diamond.ToString();
+        diamondText.text = diamond.ToString();
         //para que cuente monedas de uno en uno.
     } 
     // Start is called before the first frame update

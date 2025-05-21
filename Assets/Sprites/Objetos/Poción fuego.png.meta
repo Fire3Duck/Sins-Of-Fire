@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2d068bc8ee8bf184a9f4a5fa2d0cf25f
+guid: 9ce5c1fcee472bb449fcfa236cc7bd42
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Poci\xF3n de vida_0"
+      name: "Poci\xF3n fuego_0"
       rect:
         serializedVersion: 2
         x: 12
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c9daad8514ab574088285004f426cca
-      internalID: -1177490122
+      spriteID: b24de9ce37fee2342a1fcf8ce8d6a7e0
+      internalID: 1632016056
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "Poci\xF3n de vida_0": -1177490122
+      "Poci\xF3n fuego_0": 1632016056
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

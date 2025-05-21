@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2d068bc8ee8bf184a9f4a5fa2d0cf25f
+guid: 33ebec013dc46cb49803cf944259c50d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Poci\xF3n de vida_0"
+      name: Raton_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 2
-        width: 40
-        height: 57
+        x: 62
+        y: 25
+        width: 263
+        height: 350
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +111,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c9daad8514ab574088285004f426cca
-      internalID: -1177490122
+      spriteID: 9c3e3912757fd4b49adf103def472e55
+      internalID: 2023958985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raton_1
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 25
+        width: 263
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdb897b2989aef94686c094d994a98bf
+      internalID: 854098333
       vertices: []
       indices: 
       edges: []
@@ -128,7 +149,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "Poci\xF3n de vida_0": -1177490122
+      Raton_0: 2023958985
+      Raton_1: 854098333
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
