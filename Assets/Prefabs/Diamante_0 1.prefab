@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1016d54e1168b264ca112daf2b03a355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinSFX: {fileID: 8300000, guid: 889d8297452c3c44cba167f66b2ced86, type: 3}
+  CoinSFX: {fileID: 8300000, guid: 8c236b56f6a70174c969af14ae9854cd, type: 3}
 --- !u!61 &8373270757431671098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -157,13 +157,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 100
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

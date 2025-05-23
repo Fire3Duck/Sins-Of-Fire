@@ -316,13 +316,25 @@ MonoBehaviour:
   fireSpawn: {fileID: 8877184163872964176}
   firePrefab: {fileID: 8814118437477128451, guid: 5139e705b3428f342b26c94642652eb0, type: 3}
   canShoot: 1
+  _fireballCost: 0.35
   _atackAudio: {fileID: 0}
   deathSFX: {fileID: 0}
   jumpSFX: {fileID: 0}
-  shootSFX: {fileID: 0}
+  shootSFX: {fileID: 8300000, guid: cbe0eaa3f37228145aa863b680c7e78a, type: 3}
+  dashSFX: {fileID: 0}
+  _currentHealth: 0
+  _maxHealth: 1
+  _healthBar: {fileID: 0}
+  _damage: {fileID: 0}
+  _spriteRenderer: {fileID: 0}
   inputHorizontal: 0
   jumpForce: 6
   Velocity: 4.5
+  _chests: {fileID: 0}
+  _IsChestHere: 0
+  _currentMana: 0
+  _maxMana: 1
+  _manaBar: {fileID: 0}
 --- !u!82 &1348899179532735763
 AudioSource:
   m_ObjectHideFlags: 0

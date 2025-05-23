@@ -123,6 +123,10 @@ public bool _IsChestHere;
         {
             return;
         }
+        if(_gameManager.isPlaying == false)
+        {
+            return;
+        }
 
         inputHorizontal = Input.GetAxis("Horizontal");
 
@@ -145,7 +149,6 @@ public bool _IsChestHere;
 
         if(Input.GetButtonDown("Espadazo"))
         {
-            NormalAttack();
             _animator.SetTrigger("IsAttacking");
         }
 
@@ -306,6 +309,7 @@ public bool _IsChestHere;
     {
         Instantiate(firePrefab, fireSpawn.position, fireSpawn.rotation);
         _animator.SetTrigger("IsShooting");
+        _audioSource.PlayOneShot(shootSFX);
 
         _currentMana -= cost;
         _manaBar.fillAmount = _currentMana;
@@ -330,15 +334,16 @@ public bool _IsChestHere;
 
    public void Death()
     {
-        //_animator.SetTrigger("IsDead");
+        _animator.SetTrigger("IsDeath");
         _audioSource.PlayOneShot(deathSFX);
         _boxCollider.enabled = false;
 
         Destroy(_groundSensor.gameObject);
         inputHorizontal = 0;
-        rigidBody.velocity = Vector2.zero;
+        //rigidBody.velocity = Vector2.zero;
+        rigidBody.gravityScale = 0;
         
-        rigidBody.AddForce(Vector2.up * jumpForce / 2, ForceMode2D.Impulse);
+        //rigidBody.AddForce(Vector2.up * jumpForce / 2, ForceMode2D.Impulse);
         
         _gameManager.isPlaying = false;
 
