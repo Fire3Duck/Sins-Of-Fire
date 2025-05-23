@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    public Transform playerTransform;
+    public Transform playerTransform; //seleccionar el personaje.
 
-    public Vector3 offset;
+    public Vector3 offset; //para modificar la camara. tocar la Z.
     public Vector2 maxPosition;
     public Vector2 minPosition;
 
@@ -15,7 +15,7 @@ public class CameraMove : MonoBehaviour
 
     void Awake()
     {
-        playerTransform = GameObject.FindWithTag("Player").transform;
+        playerTransform = GameObject.FindWithTag("Player").transform; //Busca un objeto por el Tag.
     }
 
 void FixedUpdate()

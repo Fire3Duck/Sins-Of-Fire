@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour
 {
 
 private Rigidbody2D rigidBody;
-private Animator _animator;
+public Animator _animator;
 private GroundSensor _groundSensor;
 private SpriteRenderer _spriteRender;
 private BoxCollider2D _boxCollider;

@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
         _boxCollider.enabled = false;
         _audioSource.PlayOneShot(deathSFX);
         _animator.SetTrigger("EnDeath");
-        Destroy(gameObject, 0.2f);
+        Destroy(gameObject, 1.05f);
     }
 
     public void TakeDamage(float damage)

@@ -28,15 +28,15 @@ public class FireBall : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider) 
     {
-        if(collider.gameObject.layer == 7)
+        if(collider.gameObject.layer == 7) //El numero es el Layer.En este caso el 7 son los enemigos.
         {
-            Enemy enemyScript = collider.gameObject.GetComponent<Enemy>();
+            Enemy enemyScript = collider.gameObject.GetComponent<Enemy>(); //Enemy es el nombre del script.
             enemyScript.TakeDamage(fireDamage);
             Debug.Log("Hola");
             FireDeath(); 
         }
 
-        if(collider.gameObject.layer == 3)
+        if(collider.gameObject.layer == 3) //El numero es el suelo.
         {
             FireDeath();
         }

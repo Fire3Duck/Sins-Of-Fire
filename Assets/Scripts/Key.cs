@@ -10,7 +10,8 @@ public class Key : MonoBehaviour
     private SpriteRenderer _renderer;
     private SoundManager _soundManager;
     public GameObject canvasMostrar;
-    //GameManager _gameManager;
+    public GameManager _gameManager;
+    private Animator _animator;
 
     void Awake()
     
@@ -19,8 +20,8 @@ public class Key : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
         _audioSource = GetComponent<AudioSource>();
         _soundManager = GameObject.Find("BGM Manager").GetComponent<SoundManager>();
-        canvasMostrar = GameObject.Find("Canvas Victoria").GetComponent<GameObject>();
-        //_gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _animator = GetComponent<Animator>();
     }
     
     // Start is called before the first frame update
@@ -42,12 +43,13 @@ public class Key : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("Player"))
         {
+            Death();
             //Destroy(Collision.gameObject);
             PlayerControl playerScript = collider.gameObject.GetComponent<PlayerControl>();
-            Death();
-        }
-        if (collider.gameObject.CompareTag("Player")) 
-        {
+            playerScript.inputHorizontal = 0;
+            _gameManager.isPlaying = false;
+            playerScript._animator.SetBool("IsRunning", false);
+            
             if (canvasMostrar != null)
             {
                 canvasMostrar.SetActive(true); // Muestra el canvas
@@ -65,5 +67,6 @@ public class Key : MonoBehaviour
         Destroy(gameObject, 3);
         _soundManager.StopMusic();
         _soundManager.Victory();
+        _gameManager.isPlaying = false;
     }
 }
